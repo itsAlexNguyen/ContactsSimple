@@ -27,12 +27,12 @@ public class DashboardActivity extends FragmentActivity implements DashboardView
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        adapter = new DashboardListAdapter(presenter);
 
         listView = findViewById(R.id.dashboardListView);
         listView.setLayoutManager(new LinearLayoutManager(this));
         listView.setItemAnimator(new DefaultItemAnimator());
 
-        adapter = new DashboardListAdapter(presenter);
         listView.setAdapter(adapter);
 
         presenter.retrieveContacts();
