@@ -1,0 +1,80 @@
+package com.itsalexnguyen.contactssimple.network.models.randomuser;
+
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import com.google.gson.annotations.SerializedName;
+
+/**
+ * Model class for a User object from Random User call.
+ */
+public final class User implements Parcelable {
+    @SerializedName("gender")
+    public final String gender;
+
+    @SerializedName("name")
+    public final NameModel name;
+
+    @SerializedName("email")
+    public final String email;
+
+    @SerializedName("login")
+    public final Login login;
+
+    @SerializedName("dob")
+    public final String dateOfBirth;
+
+    @SerializedName("registered")
+    public final String registrationDate;
+
+    @SerializedName("phone")
+    public final String phoneNumber;
+
+    @SerializedName("cell")
+    public final String cellPhoneNumber;
+
+    @SerializedName("picture")
+    public final Picture pictures;
+
+    protected User(Parcel in) {
+        gender = in.readString();
+        name = in.readParcelable(NameModel.class.getClassLoader());
+        email = in.readString();
+        login = in.readParcelable(Login.class.getClassLoader());
+        dateOfBirth = in.readString();
+        registrationDate = in.readString();
+        phoneNumber = in.readString();
+        cellPhoneNumber = in.readString();
+        pictures = in.readParcelable(Picture.class.getClassLoader());
+    }
+
+    public static final Creator<User> CREATOR = new Creator<User>() {
+        @Override
+        public User createFromParcel(Parcel in) {
+            return new User(in);
+        }
+
+        @Override
+        public User[] newArray(int size) {
+            return new User[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(gender);
+        parcel.writeParcelable(name, i);
+        parcel.writeString(email);
+        parcel.writeParcelable(login, i);
+        parcel.writeString(dateOfBirth);
+        parcel.writeString(registrationDate);
+        parcel.writeString(phoneNumber);
+        parcel.writeString(cellPhoneNumber);
+        parcel.writeParcelable(pictures, i);
+    }
+}

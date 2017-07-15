@@ -38,7 +38,6 @@ public class ServiceHttpCallBack<T> implements Callback {
     public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
         try {
             callback.onSuccess(call, parsedResponseBody(response.body().string()));
-            Log.d(TAG, response.body().string());
         } catch (IOException ioe) {
             onFailure(call, ioe);
         }

@@ -1,4 +1,4 @@
-package com.itsalexnguyen.contactssimple.network.models;
+package com.itsalexnguyen.contactssimple.network.models.randomuser;
 
 import android.os.Parcel;
 import android.os.Parcelable;
