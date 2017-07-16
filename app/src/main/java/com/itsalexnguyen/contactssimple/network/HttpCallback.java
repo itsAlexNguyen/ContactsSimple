@@ -5,9 +5,10 @@ import java.io.IOException;
 import okhttp3.Call;
 
 /**
- * Created by alexnguyen on 2017-07-15.
+ * Wrapper class for okHttp CallBack to return a Java Model Object.
+ *
+ * @param <T> Generic type response.
  */
-
 public interface HttpCallback<T> {
     void onSuccess(Call call, T response);
 

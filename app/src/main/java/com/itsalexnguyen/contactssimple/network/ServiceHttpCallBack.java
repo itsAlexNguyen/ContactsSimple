@@ -13,12 +13,17 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-public class ServiceHttpCallBack<T> implements Callback {
+/**
+ * A wrapper CallBack for okHttp Callback to include a Java-Type response instead of a String.
+ *
+ * @param <T> Generic response object.
+ */
+class ServiceHttpCallBack<T> implements Callback {
     private final String TAG = ServiceHttpCallBack.class.getSimpleName();
     private final Type type;
     private final HttpCallback<T> callback;
 
-    public ServiceHttpCallBack(@NonNull Type type, @NonNull HttpCallback<T> callback) {
+    ServiceHttpCallBack(@NonNull Type type, @NonNull HttpCallback<T> callback) {
         this.type = type;
         this.callback = callback;
     }

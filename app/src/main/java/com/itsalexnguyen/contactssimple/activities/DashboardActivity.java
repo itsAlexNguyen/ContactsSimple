@@ -17,6 +17,9 @@ import com.itsalexnguyen.contactssimple.network.models.randomuser.User;
 import com.itsalexnguyen.contactssimple.presenters.DashboardPresenter;
 import com.itsalexnguyen.contactssimple.utils.Constants;
 
+/**
+ * This Activity represents the View Layer. Made to be really 'dumb'.
+ */
 public class DashboardActivity extends FragmentActivity implements DashboardView {
     private final DashboardPresenter presenter = new DashboardPresenter(this);
     private DashboardListAdapter adapter;

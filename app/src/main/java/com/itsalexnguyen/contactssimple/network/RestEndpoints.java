@@ -1,11 +1,14 @@
 package com.itsalexnguyen.contactssimple.network;
 
-public final class RestEndpoints {
-    public static final String BASE_URL = "https://randomuser.me";
+/**
+ * A collection of endpoints used through of the app.
+ */
+final class RestEndpoints {
+    static final String BASE_URL = "https://randomuser.me";
 
-    public static final String RANDOM_USER = "/api/";
+    static final String RANDOM_USER = "/api/";
 
-    public static String randomUsersWithCount(int count) {
+    static String randomUsersWithCount(int count) {
         return String.format("%s%s%d", RANDOM_USER, "?results=", count);
     }
 
