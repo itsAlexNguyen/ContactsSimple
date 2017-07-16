@@ -11,6 +11,7 @@
         android:id="@+id/profile_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:elevation="5dp"
         android:importantForAccessibility="no"
         android:paddingBottom="@dimen/app_static_padding"
         android:paddingLeft="@dimen/app_static_padding"
@@ -22,5 +23,6 @@
         android:layout_height="wrap_content"
         android:padding="@dimen/app_static_padding"
         android:textAlignment="viewStart"
+        android:textColor="@color/default_font"
         tools:text="Alex Nguyen" />
 </LinearLayout>

@@ -20,6 +20,6 @@
         android:layout_height="wrap_content"
         android:padding="@dimen/app_static_padding"
         android:textAlignment="center"
-        android:textSize="22sp"
-        android:textStyle="bold" />
+        android:textColor="@color/default_font"
+        android:textSize="22sp" />
 </LinearLayout>
