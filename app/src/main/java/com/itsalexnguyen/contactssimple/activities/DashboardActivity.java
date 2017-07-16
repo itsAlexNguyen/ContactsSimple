@@ -1,5 +1,6 @@
 package com.itsalexnguyen.contactssimple.activities;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -24,6 +25,7 @@ import com.itsalexnguyen.contactssimple.utils.Constants;
 public class DashboardActivity extends FragmentActivity implements DashboardView,
         RestService.Delegate {
     private final DashboardPresenter presenter = new DashboardPresenter(this, new RestService(this));
+    private ProgressDialog progressDialog;
     private DashboardListAdapter adapter;
     private RecyclerView listView;
 
@@ -32,6 +34,8 @@ public class DashboardActivity extends FragmentActivity implements DashboardView
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        progressDialog = new ProgressDialog(this);
+
         adapter = new DashboardListAdapter(presenter);
 
         listView = findViewById(R.id.dashboardListView);
@@ -55,14 +59,29 @@ public class DashboardActivity extends FragmentActivity implements DashboardView
         return networkInfo != null && networkInfo.isConnected();
     }
 
+    @Override
+    public void displayProgressDialog() {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                progressDialog.show();
+            }
+        });
+    }
+
+    @Override
+    public void hideProgressDialog() {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                progressDialog.hide();
+            }
+        });
+    }
+
     // ---  RestService.Delegate Implementation [END] ---
 
     // ---  DashboardView Implementation [START] ---
-
-    @Override
-    public void displayProgressDialog() {
-        // TODO
-    }
 
     @Override
     public void refreshPage() {
@@ -86,7 +105,7 @@ public class DashboardActivity extends FragmentActivity implements DashboardView
 
     @Override
     public void showNetworkError() {
-        // TODO
+        // TODO - Can display an activiy showing an error.
     }
 
     // ---  DashboardView Implementation [END] ---

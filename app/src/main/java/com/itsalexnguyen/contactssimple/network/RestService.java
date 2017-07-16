@@ -21,7 +21,8 @@ public class RestService {
         Request.Builder requestBuilder = client.createRequestBuilder(RestEndpoints.RANDOM_USER);
         Type type = new TypeToken<RandomUserResponse>() {
         }.getType();
-        client.enqueueRequest(requestBuilder.build(), new ServiceHttpCallBack<>(type, callback));
+        client.enqueueRequest(requestBuilder.build(), new ServiceHttpCallBack<>(type, callback, delegate));
+        delegate.displayProgressDialog();
     }
 
     public void getListRandomUsers(@NonNull HttpCallback<RandomUserResponse> callback) {
@@ -30,11 +31,16 @@ public class RestService {
                     .createRequestBuilder(RestEndpoints.randomUsersWithCount(50));
             Type type = new TypeToken<RandomUserResponse>() {
             }.getType();
-            client.enqueueRequest(requestBuilder.build(), new ServiceHttpCallBack<>(type, callback));
+            client.enqueueRequest(requestBuilder.build(), new ServiceHttpCallBack<>(type, callback, delegate));
+            delegate.displayProgressDialog();
         }
     }
 
     public interface Delegate {
         boolean isNetworkConnected();
+
+        void displayProgressDialog();
+
+        void hideProgressDialog();
     }
 }

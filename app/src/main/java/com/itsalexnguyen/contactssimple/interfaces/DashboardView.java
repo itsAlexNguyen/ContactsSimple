@@ -20,11 +20,6 @@ public interface DashboardView {
     void displayContactDetails(User contact);
 
     /**
-     * Notifies the view to display a loading dialog.
-     */
-    void displayProgressDialog();
-
-    /**
      * Notifies the view to display a network error.
      */
     void showNetworkError();

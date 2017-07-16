@@ -8,6 +8,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+/**
+ * This is the Presenter for the Contact Details screen as part of the MVP architecture.
+ */
 public class ContactDetailsPresenter {
     private final User contact;
 
@@ -73,6 +76,11 @@ public class ContactDetailsPresenter {
         return "";
     }
 
+    /**
+     * Constructor.
+     *
+     * @param contact Contact to display details.
+     */
     public ContactDetailsPresenter(User contact) {
         this.contact = contact;
     }

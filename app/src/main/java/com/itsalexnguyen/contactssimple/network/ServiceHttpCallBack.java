@@ -21,10 +21,14 @@ import okhttp3.Response;
 class ServiceHttpCallBack<T> implements Callback {
     private final String TAG = ServiceHttpCallBack.class.getSimpleName();
     private final Type type;
+    private final RestService.Delegate delegate;
+
     private final HttpCallback<T> callback;
 
-    ServiceHttpCallBack(@NonNull Type type, @NonNull HttpCallback<T> callback) {
+    ServiceHttpCallBack(@NonNull Type type, @NonNull HttpCallback<T> callback,
+                        @NonNull RestService.Delegate delegate) {
         this.type = type;
+        this.delegate = delegate;
         this.callback = callback;
     }
 
@@ -35,12 +39,14 @@ class ServiceHttpCallBack<T> implements Callback {
 
     @Override
     public void onFailure(@NonNull Call call, @NonNull IOException e) {
+        delegate.hideProgressDialog();
         callback.onFailure(call, e);
         Log.d(TAG, call.toString());
     }
 
     @Override
     public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+        delegate.hideProgressDialog();
         try {
             callback.onSuccess(call, parsedResponseBody(response.body().string()));
         } catch (IOException ioe) {

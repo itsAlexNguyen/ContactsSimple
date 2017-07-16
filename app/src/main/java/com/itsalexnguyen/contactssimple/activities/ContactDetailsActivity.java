@@ -8,11 +8,13 @@ import android.support.v7.widget.RecyclerView;
 
 import com.itsalexnguyen.contactssimple.R;
 import com.itsalexnguyen.contactssimple.adapters.ContactDetailsListAdapter;
-import com.itsalexnguyen.contactssimple.adapters.DashboardListAdapter;
 import com.itsalexnguyen.contactssimple.network.models.randomuser.User;
 import com.itsalexnguyen.contactssimple.presenters.ContactDetailsPresenter;
 import com.itsalexnguyen.contactssimple.utils.Constants;
 
+/**
+ * This Activity displays detail information about a selected contact.
+ */
 public class ContactDetailsActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
