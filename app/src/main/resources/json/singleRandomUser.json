@@ -1,0 +1,37 @@
+{
+  "gender": "male",
+  "name": {
+    "title": "mr",
+    "first": "victor",
+    "last": "christensen"
+  },
+  "location": {
+    "street": "9532 torvegade",
+    "city": "kongens  lyngby",
+    "state": "sjælland",
+    "postcode": 43480
+  },
+  "email": "victor.christensen@example.com",
+  "login": {
+    "username": "whitesnake159",
+    "password": "fish",
+    "salt": "sFxnFWby",
+    "md5": "f3a6ac81555de92a6f8bddb022638511",
+    "sha1": "93959a880437f888d53421b5e005880d75e233a9",
+    "sha256": "cf40b8a1fcc6f9a236ba6e226c7d950bb8b57fdd6c82511f06f892573548847e"
+  },
+  "dob": "1952-11-12 07:36:29",
+  "registered": "2014-01-22 03:32:42",
+  "phone": "23856805",
+  "cell": "53714978",
+  "id": {
+    "name": "CPR",
+    "value": "169314-1867"
+  },
+  "picture": {
+    "large": "https://randomuser.me/api/portraits/men/54.jpg",
+    "medium": "https://randomuser.me/api/portraits/med/men/54.jpg",
+    "thumbnail": "https://randomuser.me/api/portraits/thumb/men/54.jpg"
+  },
+  "nat": "DK"
+}
