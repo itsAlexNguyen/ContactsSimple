@@ -16,13 +16,13 @@ public class Location implements Parcelable {
     public final String state;
 
     @SerializedName("postcode")
-    public final int postcode;
+    public final String postcode;
 
     protected Location(Parcel in) {
         street = in.readString();
         city = in.readString();
         state = in.readString();
-        postcode = in.readInt();
+        postcode = in.readString();
     }
 
     public static final Creator<Location> CREATOR = new Creator<Location>() {
@@ -47,5 +47,6 @@ public class Location implements Parcelable {
         parcel.writeString(street);
         parcel.writeString(city);
         parcel.writeString(state);
+        parcel.writeString(postcode);
     }
 }

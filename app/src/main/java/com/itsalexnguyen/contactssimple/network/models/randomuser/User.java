@@ -37,6 +37,9 @@ public class User implements Parcelable, Comparable<User> {
     @SerializedName("picture")
     public final Picture pictures;
 
+    @SerializedName("location")
+    public final Location location;
+
     protected User(Parcel in) {
         gender = in.readString();
         name = in.readParcelable(NameModel.class.getClassLoader());
@@ -47,6 +50,7 @@ public class User implements Parcelable, Comparable<User> {
         phoneNumber = in.readString();
         cellPhoneNumber = in.readString();
         pictures = in.readParcelable(Picture.class.getClassLoader());
+        location = in.readParcelable(Location.class.getClassLoader());
     }
 
     public static final Creator<User> CREATOR = new Creator<User>() {
@@ -60,6 +64,11 @@ public class User implements Parcelable, Comparable<User> {
             return new User[size];
         }
     };
+
+    @Override
+    public int compareTo(@NonNull User user) {
+        return this.name.lastName.compareTo(user.name.lastName);
+    }
 
     @Override
     public int describeContents() {
@@ -77,10 +86,6 @@ public class User implements Parcelable, Comparable<User> {
         parcel.writeString(phoneNumber);
         parcel.writeString(cellPhoneNumber);
         parcel.writeParcelable(pictures, i);
-    }
-
-    @Override
-    public int compareTo(@NonNull User user) {
-        return this.name.lastName.compareTo(user.name.lastName);
+        parcel.writeParcelable(location, i);
     }
 }
