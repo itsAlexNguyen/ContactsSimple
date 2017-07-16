@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">ContactsSimple</string>
+
+    <!--Contact Details Page-->
+    <string name="str_email">Email</string>
+    <string name="str_gender">Gender</string>
+    <string name="str_location">Location</string>
+    <string name="str_date_of_birth">Date of Birth</string>
+
 </resources>

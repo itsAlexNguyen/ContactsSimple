@@ -27,7 +27,7 @@ public class ContactDetailsActivity extends FragmentActivity {
             ContactDetailsPresenter presenter = new ContactDetailsPresenter(contact);
 
             // Setup Adapter
-            ContactDetailsListAdapter adapter = new ContactDetailsListAdapter(presenter);
+            ContactDetailsListAdapter adapter = new ContactDetailsListAdapter(presenter, this);
             adapter.buildRows();
 
             // Setup Listview

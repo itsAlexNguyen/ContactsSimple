@@ -4,11 +4,9 @@ import com.itsalexnguyen.contactssimple.network.models.randomuser.User;
 
 import org.apache.commons.lang3.text.WordUtils;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
-import java.util.TimeZone;
 
 public class ContactDetailsPresenter {
     private final User contact;
