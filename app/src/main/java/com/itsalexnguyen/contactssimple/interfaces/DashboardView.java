@@ -8,13 +8,6 @@ import com.itsalexnguyen.contactssimple.network.models.randomuser.User;
 public interface DashboardView {
 
     /**
-     * Indicates whether the device has connection to the Internet.
-     *
-     * @return True if there is network connection, false otherwise.
-     */
-    boolean isNetworkConnected();
-
-    /**
      * Notifies the View layer to refresh itself.
      */
     void refreshPage();
@@ -30,4 +23,9 @@ public interface DashboardView {
      * Notifies the view to display a loading dialog.
      */
     void displayProgressDialog();
+
+    /**
+     * Notifies the view to display a network error.
+     */
+    void showNetworkError();
 }

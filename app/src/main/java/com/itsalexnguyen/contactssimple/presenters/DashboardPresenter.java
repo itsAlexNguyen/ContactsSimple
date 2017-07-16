@@ -22,6 +22,7 @@ public class DashboardPresenter {
 
     private final String TAG = DashboardPresenter.class.getSimpleName();
     private final ArrayList<User> contacts = new ArrayList<>();
+    private final RestService restService;
     private final DashboardView view;
 
     /**
@@ -36,13 +37,13 @@ public class DashboardPresenter {
     /**
      * Constructor.
      */
-    public DashboardPresenter(DashboardView view) {
+    public DashboardPresenter(DashboardView view, RestService restService) {
         this.view = view;
+        this.restService = restService;
     }
 
     public void retrieveContacts() {
-        RestService restService = new RestService();
-        restService.getListRandomUsers(50, new HttpCallback<RandomUserResponse>() {
+        restService.getListRandomUsers(new HttpCallback<RandomUserResponse>() {
             @Override
             public void onSuccess(Call call, RandomUserResponse response) {
                 onHandleResponse(response.users);
@@ -50,7 +51,7 @@ public class DashboardPresenter {
 
             @Override
             public void onFailure(Call call, IOException exception) {
-
+                view.showNetworkError();
             }
         });
     }

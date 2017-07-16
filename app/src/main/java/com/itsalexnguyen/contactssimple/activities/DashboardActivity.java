@@ -13,6 +13,7 @@ import android.support.v7.widget.RecyclerView;
 import com.itsalexnguyen.contactssimple.R;
 import com.itsalexnguyen.contactssimple.adapters.DashboardListAdapter;
 import com.itsalexnguyen.contactssimple.interfaces.DashboardView;
+import com.itsalexnguyen.contactssimple.network.RestService;
 import com.itsalexnguyen.contactssimple.network.models.randomuser.User;
 import com.itsalexnguyen.contactssimple.presenters.DashboardPresenter;
 import com.itsalexnguyen.contactssimple.utils.Constants;
@@ -20,8 +21,9 @@ import com.itsalexnguyen.contactssimple.utils.Constants;
 /**
  * This Activity represents the View Layer. Made to be really 'dumb'.
  */
-public class DashboardActivity extends FragmentActivity implements DashboardView {
-    private final DashboardPresenter presenter = new DashboardPresenter(this);
+public class DashboardActivity extends FragmentActivity implements DashboardView,
+        RestService.Delegate {
+    private final DashboardPresenter presenter = new DashboardPresenter(this, new RestService(this));
     private DashboardListAdapter adapter;
     private RecyclerView listView;
 
@@ -43,8 +45,7 @@ public class DashboardActivity extends FragmentActivity implements DashboardView
 
     // --- Android Life-Cycle [END] ---
 
-
-    // ---  DashboardView Implementation [START] ---
+    // ---  RestService.Delegate Implementation [START] ---
 
     @Override
     public boolean isNetworkConnected() {
@@ -53,6 +54,10 @@ public class DashboardActivity extends FragmentActivity implements DashboardView
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
         return networkInfo != null && networkInfo.isConnected();
     }
+
+    // ---  RestService.Delegate Implementation [END] ---
+
+    // ---  DashboardView Implementation [START] ---
 
     @Override
     public void displayProgressDialog() {
@@ -77,6 +82,11 @@ public class DashboardActivity extends FragmentActivity implements DashboardView
         bundle.putParcelable(Constants.CONTACT, contact);
         intent.putExtras(bundle);
         startActivity(intent);
+    }
+
+    @Override
+    public void showNetworkError() {
+        // TODO
     }
 
     // ---  DashboardView Implementation [END] ---

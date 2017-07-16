@@ -11,9 +11,10 @@ import okhttp3.Request;
 
 public class RestService {
     private final NetworkServiceClient client = new NetworkServiceClient();
+    private final Delegate delegate;
 
-    public RestService() {
-        // Intentionally left empty
+    public RestService(Delegate delegate) {
+        this.delegate = delegate;
     }
 
     public void getRandomUser(@NonNull HttpCallback<RandomUserResponse> callback) {
@@ -23,12 +24,17 @@ public class RestService {
         client.enqueueRequest(requestBuilder.build(), new ServiceHttpCallBack<>(type, callback));
     }
 
-    public void getListRandomUsers(@NonNull int count,
-                                   @NonNull HttpCallback<RandomUserResponse> callback) {
-        Request.Builder requestBuilder = client
-                .createRequestBuilder(RestEndpoints.randomUsersWithCount(count));
-        Type type = new TypeToken<RandomUserResponse>() {
-        }.getType();
-        client.enqueueRequest(requestBuilder.build(), new ServiceHttpCallBack<>(type, callback));
+    public void getListRandomUsers(@NonNull HttpCallback<RandomUserResponse> callback) {
+        if (delegate.isNetworkConnected()) {
+            Request.Builder requestBuilder = client
+                    .createRequestBuilder(RestEndpoints.randomUsersWithCount(50));
+            Type type = new TypeToken<RandomUserResponse>() {
+            }.getType();
+            client.enqueueRequest(requestBuilder.build(), new ServiceHttpCallBack<>(type, callback));
+        }
+    }
+
+    public interface Delegate {
+        boolean isNetworkConnected();
     }
 }
