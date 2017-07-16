@@ -1,10 +1,12 @@
 package com.itsalexnguyen.contactssimple.binders;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.DecelerateInterpolator;
 
 import com.itsalexnguyen.contactssimple.R;
 import com.itsalexnguyen.contactssimple.interfaces.ItemSelectedListener;
@@ -13,7 +15,8 @@ import com.itsalexnguyen.contactssimple.utils.CircleTransform;
 import com.itsalexnguyen.contactssimple.viewholders.ContactRowViewHolder;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
+import org.apache.commons.lang3.text.WordUtils;
+
 import java.util.Locale;
 
 public class ContactRowBinder extends AbstractDataBinder<ContactRowViewHolder> {
@@ -40,7 +43,8 @@ public class ContactRowBinder extends AbstractDataBinder<ContactRowViewHolder> {
 
         // Set the name label
         holder.nameLabel.setText(String.format(Locale.getDefault(), "%s %s",
-                contact.name.firstName, contact.name.lastName));
+                WordUtils.capitalize(contact.name.firstName),
+                WordUtils.capitalize(contact.name.lastName)));
 
         // Set the Profile Image
         Picasso.with(ctx)
@@ -57,5 +61,17 @@ public class ContactRowBinder extends AbstractDataBinder<ContactRowViewHolder> {
                 listener.onItemSelected(contact);
             }
         });
+
+        // Animation
+        runEnterAnimation(holder.backgroundView);
+    }
+
+    private void runEnterAnimation(View view) {
+        view.setTranslationY(Resources.getSystem().getDisplayMetrics().heightPixels);
+        view.animate()
+                .translationY(0)
+                .setInterpolator(new DecelerateInterpolator(3.f))
+                .setDuration(400)
+                .start();
     }
 }

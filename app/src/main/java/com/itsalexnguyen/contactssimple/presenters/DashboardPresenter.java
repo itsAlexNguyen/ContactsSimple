@@ -11,6 +11,7 @@ import com.itsalexnguyen.contactssimple.network.models.randomuser.User;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import okhttp3.Call;
 
@@ -71,6 +72,7 @@ public class DashboardPresenter {
     private void onHandleResponse(ArrayList<User> users) {
         contacts.clear();
         contacts.addAll(users);
+        Collections.sort(contacts);
         view.refreshPage();
     }
 }

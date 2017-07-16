@@ -2,13 +2,14 @@ package com.itsalexnguyen.contactssimple.network.models.randomuser;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.support.annotation.NonNull;
 
 import com.google.gson.annotations.SerializedName;
 
 /**
  * Model class for a User object from Random User call.
  */
-public final class User implements Parcelable {
+public final class User implements Parcelable, Comparable<User> {
     @SerializedName("gender")
     public final String gender;
 
@@ -76,5 +77,10 @@ public final class User implements Parcelable {
         parcel.writeString(phoneNumber);
         parcel.writeString(cellPhoneNumber);
         parcel.writeParcelable(pictures, i);
+    }
+
+    @Override
+    public int compareTo(@NonNull User user) {
+        return this.name.lastName.compareTo(user.name.lastName);
     }
 }

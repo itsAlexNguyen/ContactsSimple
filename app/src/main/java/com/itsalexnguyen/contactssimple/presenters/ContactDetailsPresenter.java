@@ -1,12 +1,15 @@
 package com.itsalexnguyen.contactssimple.presenters;
 
+import com.itsalexnguyen.contactssimple.network.models.randomuser.User;
+
 public class ContactDetailsPresenter {
+    private final User contact;
 
-    public ContactDetailsPresenter() {
-
+    public User getContact() {
+        return contact;
     }
 
-    public void start() {
-        // TODO
+    public ContactDetailsPresenter(User contact) {
+        this.contact = contact;
     }
 }

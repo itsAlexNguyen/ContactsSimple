@@ -14,30 +14,27 @@ import com.itsalexnguyen.contactssimple.presenters.ContactDetailsPresenter;
 import com.itsalexnguyen.contactssimple.utils.Constants;
 
 public class ContactDetailsActivity extends FragmentActivity {
-    private final ContactDetailsPresenter presenter = new ContactDetailsPresenter();
-    private ContactDetailsListAdapter adapter;
-    private RecyclerView listView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact_details);
-
-        // Setup Adapter
-        adapter = new ContactDetailsListAdapter(presenter);
-
-        // Setup Listview
-        listView = findViewById(R.id.contactDetailsListView);
-        listView.setLayoutManager(new LinearLayoutManager(this));
-        listView.setItemAnimator(new DefaultItemAnimator());
-        listView.setAdapter(adapter);
-
         // Get Intent Data
         Object obj = getIntent().getExtras().get(Constants.CONTACT);
         User contact = obj instanceof User ? (User) obj : null;
 
         if (contact != null) {
-            presenter.start();
+            // Setup Presenter
+            ContactDetailsPresenter presenter = new ContactDetailsPresenter(contact);
+
+            // Setup Adapter
+            ContactDetailsListAdapter adapter = new ContactDetailsListAdapter(presenter);
+            adapter.buildRows();
+
+            // Setup Listview
+            RecyclerView listView = findViewById(R.id.contactDetailsListView);
+            listView.setLayoutManager(new LinearLayoutManager(this));
+            listView.setItemAnimator(new DefaultItemAnimator());
+            listView.setAdapter(adapter);
         }
     }
 }
