@@ -1,5 +1,6 @@
 package com.itsalexnguyen.contactssimple.binders;
 
+import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -9,7 +10,8 @@ public class TwoColumnBinder extends AbstractDataBinder<TwoColumnViewHolder> {
     private final String label;
     private final String value;
 
-    public TwoColumnBinder(String label, String value) {
+    public TwoColumnBinder(@NonNull String label,
+                           @NonNull String value) {
         this.label = label;
         this.value = value;
     }

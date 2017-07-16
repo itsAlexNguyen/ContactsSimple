@@ -1,6 +1,7 @@
 package com.itsalexnguyen.contactssimple.adapters;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 
 import com.itsalexnguyen.contactssimple.R;
 import com.itsalexnguyen.contactssimple.binders.AbstractDataBinder;
@@ -17,7 +18,14 @@ public class ContactDetailsListAdapter extends AbstractDataBindAdapter {
     private final ContactDetailsPresenter presenter;
     private final Context ctx;
 
-    public ContactDetailsListAdapter(ContactDetailsPresenter presenter, Context context) {
+    /**
+     * Constructor.
+     *
+     * @param presenter presenter to grab information from.
+     * @param context   Context to get string names.
+     */
+    public ContactDetailsListAdapter(@NonNull ContactDetailsPresenter presenter,
+                                     @NonNull Context context) {
         this.presenter = presenter;
         this.listItems = new ArrayList<>();
         this.ctx = context;

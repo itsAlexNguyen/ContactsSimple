@@ -2,6 +2,7 @@ package com.itsalexnguyen.contactssimple.binders;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
@@ -20,7 +21,7 @@ import java.util.Locale;
 public class ProfileImageBinder extends AbstractDataBinder<ProfileImageViewHolder> {
     private final User contact;
 
-    public ProfileImageBinder(User contact) {
+    public ProfileImageBinder(@NonNull User contact) {
         this.contact = contact;
     }
 
