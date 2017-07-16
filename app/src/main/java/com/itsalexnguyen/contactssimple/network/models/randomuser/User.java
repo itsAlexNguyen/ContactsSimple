@@ -9,7 +9,7 @@ import com.google.gson.annotations.SerializedName;
 /**
  * Model class for a User object from Random User call.
  */
-public final class User implements Parcelable, Comparable<User> {
+public class User implements Parcelable, Comparable<User> {
     @SerializedName("gender")
     public final String gender;
 

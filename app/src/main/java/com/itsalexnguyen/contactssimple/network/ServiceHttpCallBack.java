@@ -28,7 +28,7 @@ class ServiceHttpCallBack<T> implements Callback {
         this.callback = callback;
     }
 
-    private T parsedResponseBody(String httpResponseBody) {
+    private T parsedResponseBody(@NonNull String httpResponseBody) {
         Gson gson = new GsonBuilder().create();
         return gson.fromJson(httpResponseBody, type);
     }
