@@ -24,7 +24,7 @@ script:
 # build app and assemble APK, in debug mode
   - ./gradlew assembleDebug
 # run all the local unit tests of app module
-  - ./gradlew :testDebug
+  - ./gradlew test
 env:
   matrix:
   - ANDROID_TARGET=android-24 ANDROID_ABI=armeabi-v7a
