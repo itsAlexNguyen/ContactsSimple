@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.github.kt3k.coveralls'
+apply plugin: 'jacoco-android'
 
 android {
     compileSdkVersion 26
@@ -21,6 +22,7 @@ android {
             testCoverageEnabled true
         }
     }
+
     lintOptions {
         abortOnError false
     }
