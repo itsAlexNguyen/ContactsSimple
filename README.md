@@ -11,6 +11,7 @@ The app is coded all in Java and using Gradle for building.
 * Ability to grab an array of 50 contacts from [Random User](https://randomuser.me/)
 * Display a List of Contacts
 * Display a page to show more details of contacts
+* Travis Implemention with Unit Test.
 
 ### The Future
 * Add ability to call contacts, just like native address book.
